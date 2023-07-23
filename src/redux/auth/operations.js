@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import notification from '../../utils/notification';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -13,10 +12,8 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
   try {
     const response = await axios.post('/users/signup', credentials);
     setAuthHeader(response.data.token);
-    notification.notifyUserRegisterSuccess();
     return response.data;
   } catch (error) {
-    notification.notifyRegistrationFailure();
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -27,7 +24,6 @@ export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI
     setAuthHeader(response.data.token);
     return response.data;
   } catch (error) {
-    notification.notifyLoginFailure();
     return thunkAPI.rejectWithValue(error.message);
   }
 });
