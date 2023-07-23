@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 import { useState } from 'react';
 
-const ContactForm = () => {
+export const ContactForm = () => {
 
     const contacts = useSelector(selectContacts);
     const dispatch = useDispatch();
@@ -71,4 +71,4 @@ ContactForm.propTypes = {
     }))
 };
 
-export default ContactForm;
+// export default ContactForm;

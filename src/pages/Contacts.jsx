@@ -1,5 +1,5 @@
 import { ContactForm } from '../components/ContactForm/ContactForm';
-import { ContactsList } from '../components/ContactsList/ContactsList';
+import { ContactList } from '../components/ContactList/ContactList';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
@@ -20,7 +20,7 @@ const Contacts = () => {
       {isLoading && !error && <Loader />}
       <div>
         <ContactForm />
-        <ContactsList />
+        <ContactList />
       </div>
     </>
   );

@@ -1,15 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
-import { selectContacts, selectFilter } from '../../redux/selectors';
+import { selectFilter } from '../../redux/selectors';
 import { setFilterValue } from '../../redux/filterSlice';
 import Menu from '../Menu/Menu';
 
 export const SearchAppBar = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
-  const contactsList = useSelector(selectContacts);
-  const contactsAmount = contactsList.length;
 
   const handleChange = event => {
     const value = event.target.value;
