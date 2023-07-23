@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/operations';
+import { addContact } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/selectors';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
+import { useState } from 'react';
 
 const ContactForm = () => {
 
     const contacts = useSelector(selectContacts);
     const dispatch = useDispatch();
+    const [nameValue, setNameValue] = useState('');
+    const [numberValue, setNumberValue] = useState('');
 
     const onSubmitCheckAndAdd = e => {
         e.preventDefault();
@@ -23,7 +26,8 @@ const ContactForm = () => {
             ? window.alert(`${name} is already in contacts`)
             : dispatch(addContact(newContact));
         
-        form.reset();
+        setNameValue('');
+        setNumberValue('');
     };
     
     return (
@@ -33,6 +37,10 @@ const ContactForm = () => {
                 className={css.formInput}
                 type="text"
                 name="name"
+                autoComplete="off"
+                value={nameValue}
+                onChange={e => setNameValue(e.target.value)}
+                label="Name"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
@@ -42,6 +50,10 @@ const ContactForm = () => {
                 className={css.formInput}
                 type="tel"
                 name="number"
+                autoComplete="off"
+                value={numberValue}
+                onChange={e => setNumberValue(e.target.value)}
+                label="Number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
