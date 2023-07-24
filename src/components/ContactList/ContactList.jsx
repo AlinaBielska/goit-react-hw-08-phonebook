@@ -35,7 +35,7 @@ export const ContactList = () => {
     return (
         <>
             {contacts.length > 0 && <ul className={css.contactsList}>{list}</ul>}
-            {isLoading || contacts.length === 0 && <h4 className={css.empty}>You did not add any Contact yet...</h4>}
+            {(isLoading || contacts.length === 0) && <h4 className={css.empty}>You did not add any Contact yet...</h4>}
         </>
     );
 };
