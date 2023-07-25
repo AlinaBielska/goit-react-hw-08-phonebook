@@ -12,15 +12,16 @@ export const ContactsListItem = ({ contact, id, name, number, onContactRemove })
     dispatch(setOpenedContactAction(contact));
   };
   return (
-    <li
-      key={id}
-      className={css.item}
-      label={`${name}: ${number}`}
-      variant="outlined"
-      onClick={() => handleEditContact(contact)}
-      onDelete={() => onContactRemove(id)}
-      >
-    </li>
+    <li className={css.contactItem} key={id} label={`${name}: ${number}`} onClick={() => handleEditContact(contact)}>
+    <span>{name}: {number}</span>
+    <button
+        className={css.contactButton}
+        type="button"
+        id={id}
+        onClick={() => onContactRemove(id)}>
+        X
+    </button>
+</li>
   );
 };
 
