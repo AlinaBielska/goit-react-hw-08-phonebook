@@ -16,10 +16,10 @@ export const ContactForm = () => {
         e.preventDefault();
         const form = e.currentTarget;
         const name = form.elements.name.value;
-        const phone = form.elements.number.value;
+        // const phone = form.elements.number.value;
         const newContact = {
-            name,
-            phone,
+            nameValue,
+            numberValue,
         };
 
         contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
