@@ -16,15 +16,13 @@ export const ContactForm = () => {
         e.preventDefault();
         const form = e.currentTarget;
         const name = form.elements.name.value;
-        // const phone = form.elements.number.value;
-        const newContact = {
-            nameValue,
-            numberValue,
-        };
 
         contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
             ? window.alert(`${name} is already in contacts`)
-            : dispatch(addContact(newContact));
+            : dispatch(addContact({
+                name: nameValue,
+                number: numberValue,
+            }));
         
         setNameValue('');
         setNumberValue('');
